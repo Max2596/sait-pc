@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Компьютерный мир</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+    <header>
+        <h1 class="logo">Компьютерный мир</h1>
+        <nav>
+            <ul>
+                <li class="active"><a href="#introduction">Наши сборки</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#request">Оставить заявку</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about" class="about-us">
+        <h1>О нас:</h1>
+        <h2>В нашем магазине мы создаём мощные и надежные компьютерные сборки, чтобы удовлетворить потребности каждого клиента. Наша команда экспертов с богатым опытом подбирает компоненты только от проверенных производителей, чтобы вы получили максимальную производительность и долговечность. Мы стремимся к тому, чтобы каждый наш клиент был доволен своей покупкой и получил идеальное устройство для работы, учёбы или игр.</h2>
+    </section>
+
+    <section id="projects" class="latest-projects">
+        <div class="thumbnails">
+            <img src="4.png" alt="Пк 4">
+            <img src="5.png" alt="Пк 5">
+            <img src="6.png" alt="Пк 6">
+        </div>
+    </section>
+
+    <section id="introduction" class="intro">
+        <h2>Наши Сборки</h2>
+    </section>
+
+    <section id="projects" class="latest-projects">
+        <div class="thumbnails">
+            <img src="1.png" alt="Пк 1">
+            <img src="2.png" alt="Пк 2">
+            <img src="3.png" alt="Пк 3">
+        </div>
+    </section>
+
+    <section id="request" class="request-section">
+        <h2>📝 Оставить заявку</h2>
+        <p>Если у вас есть вопросы или вы хотите сделать заказ, заполните форму ниже, и мы свяжемся с вами в ближайшее время!</p>
+        <form class="request-form" id="request-form">
+            <input type="text" placeholder="Ваше имя" required />
+            <input type="email" placeholder="Ваш email" required id="email" />
+            <textarea placeholder="Ваши пожелания" rows="4" required></textarea>
+            <button type="button" id="submitRequest">Отправить</button>
+        </form>
+        <div id="error-message" style="color: red; margin-top: 10px; display: none;"></div> 
+    </section>
+
+    <footer>
+        <div class="socials">
+            <a href="#">FACEBOOK</a>
+            <a href="#">TWITTER</a>
+            <a href="#">INSTAGRAM</a>
+        </div>
+        <p>Copyright © 2026 Company</p>
+    </footer>
+
+    <script>
+        document.getElementById('submitRequest').addEventListener('click', function() {
+            const emailInput = document.getElementById('email');
+            const email = emailInput.value;
+            const errorMessage = document.getElementById('error-message');
+            const successMessage = document.createElement('div'); 
+            
+            //email
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            
+            if (!emailPattern.test(email)) {
+                errorMessage.textContent = 'Пожалуйста, введите корректный email адрес.';
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none'; 
+            } else {
+                errorMessage.style.display = 'none'; 
+
+                successMessage.textContent = '📝 Заявка отправлена!';
+                successMessage.style.color = 'green';
+                successMessage.style.marginTop = '10px';
+
+                document.querySelector('.request-section').appendChild(successMessage);
+            }
+        });
+    </script>
+</body>
+</html>
